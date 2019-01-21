@@ -1,0 +1,25 @@
+{
+  "name": "pmbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "firebase serve",
+    "compile": "node-sass src/scss/index.scss public/css/index.css",
+    "watch-css": "nodemon -e scss -x \"npm run compile\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jzeltman/pmbot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jzeltman/pmbot/issues"
+  },
+  "homepage": "https://github.com/jzeltman/pmbot#readme",
+  "devDependencies": {
+    "node-sass": "^4.11.0"
+  }
+}

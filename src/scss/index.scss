@@ -1,0 +1,11 @@
+* { box-sizing: border-box; }
+header {
+    input {
+        &[type=text] {
+            border: none;
+            border-bottom: 2px solid #ccc;
+            line-height: 50px;
+            font-size: 30px;
+        }
+    }
+}
