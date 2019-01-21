@@ -15,7 +15,7 @@
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
 
-    <link rel="stylesheet" href="css/index.c8032f008b02a384e556.css?2ff55ca70d960e701cb1">
+    <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.chunks.main.css %>">
 
   </head>
   <body>
@@ -59,6 +59,6 @@
       </section>
     </form>
 
-    <script src="js/main.8edb76480a569330e8a2.js?2ff55ca70d960e701cb1"></script>
+    <script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
   </body>
 </html>
