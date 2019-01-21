@@ -1,0 +1,16 @@
+* { box-sizing: border-box; }
+
+html, body {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+header {
+    input {
+        &[type=text] {
+            border: none;
+            border-bottom: 2px solid #ccc;
+            line-height: 50px;
+            font-size: 30px;
+        }
+    }
+}
