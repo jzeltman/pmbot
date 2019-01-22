@@ -1,10 +1,11 @@
 // webpack v4
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const WebpackMd5Hash = require('webpack-md5-hash');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const StyleLintPlugin = require('stylelint-webpack-plugin');
+const path                  = require('path');
+const HtmlWebpackPlugin     = require('html-webpack-plugin');
+const WebpackMd5Hash        = require('webpack-md5-hash');
+const MiniCssExtractPlugin  = require('mini-css-extract-plugin');
+const CleanWebpackPlugin    = require('clean-webpack-plugin');
+const StyleLintPlugin       = require('stylelint-webpack-plugin');
+const LiveReloadPlugin      = require('webpack-livereload-plugin');
 
 module.exports = {
     entry: { main: './src/js/index.js' },
@@ -28,7 +29,7 @@ module.exports = {
         ]
     },
     plugins: [
-        new CleanWebpackPlugin('dist', {}),
+        new CleanWebpackPlugin('public', {}),
         new MiniCssExtractPlugin({
             filename: 'css/index.[contenthash].css',
         }),
@@ -38,6 +39,7 @@ module.exports = {
             template: './src/index.html',
             filename: 'index.html'
         }),
-        new WebpackMd5Hash()
+        new WebpackMd5Hash(),
+        new LiveReloadPlugin()
     ]
 };

@@ -1,4 +1,4 @@
-import app from './app';
+import App from './app';
 import '../scss/index.scss';
 
-document.addEventListener('DOMContentLoaded', () => new app());
+document.addEventListener('DOMContentLoaded', () => new App());

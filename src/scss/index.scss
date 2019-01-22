@@ -1,16 +1,63 @@
+@import './mixins';
+
+$primaryColor: #42c698;
+$secondaryColor: #005e79;
+$tertiaryColor: #feb02d;
+$bgTop: #e0fffc;
+$bgBottom: #98ffe7;
+$bodyFont: 'Work Sans', sans-serif; 
+
 * { box-sizing: border-box; }
 
 html, body {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: $bodyFont;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    @include linearGradient($bgTop, $bgBottom);
+    font-weight: 400;
+}
+
+a { 
+    color: $primaryColor;
 }
 
 header {
-    input {
-        &[type=text] {
-            border: none;
-            border-bottom: 2px solid #ccc;
-            line-height: 50px;
-            font-size: 30px;
+    background: $primaryColor;
+    margin: 0;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+
+    h1 {
+        color: $secondaryColor;
+        margin: 0;
+        padding: 0;
+        font: 300 3rem/5rem $bodyFont;
+    }
+
+    #user {
+        align-self: center;
+
+        button {
+            background: $bgBottom;
+            border: 3px solid $bgBottom;
+            padding: 0 1.2rem;
+            color: $secondaryColor;
+            font: 400 1.2rem/3rem $bodyFont;
+            cursor: pointer;
+            border-radius: 50px;
+            position: relative;
+
+            img { 
+                max-width: 3rem;
+                border-radius: 1000px;
+                position: absolute;
+                top: 0;
+                right: 0;
+            }
         }
+
+        #profile { padding: 0 4rem 0 1.2rem; }
     }
 }
