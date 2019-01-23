@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.chunks.main.css %>">
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,900" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="http://localhost:3000/css/embed.css" />
 
   </head>
   <body id="app">
@@ -27,7 +28,16 @@
       <aside id="user"></aside>
     </header>
     <aside id="chat-container">
-      <input type="text" name="new_message" placeholder="Hey Coach..." />
+      <div id="embedded_messenger">
+          <header id="message_header" onclick="Botkit.toggle()">Chat</header>
+          <iframe  id="botkit_client" src="//botkit-web.glitch.me/chat.html"></iframe>
+      </div>
+      <script src="//botkit-web.glitch.me/embed.js"></script>
+      <script>
+        var options = {}; // for options, see: https://github.com/howdyai/botkit-starter-web/blob/master/docs/botkit_web_client.md#botkitbootuser
+        Botkit.boot(options);
+      </script>
+      <link rel="stylesheet" href="//botkit-web.glitch.me/css/embed.css" />
     </aside>
     <main></main>
     <script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
