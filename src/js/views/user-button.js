@@ -5,7 +5,7 @@ export default class UserButtonView {
         this.$el = el;
         this.events = window.events;
         this.template();
-        console.log('button Auth',el,Utils);
+        this.events.log('button Auth',el,Utils);
 
         this.events.sub('auth:success',this.updateViewWithModel.bind(this));
         this.events.sub('user_model:create',this.template.bind(this));

@@ -32,7 +32,7 @@ export default class UserProfileView {
     }
 
     template(){
-        console.log('template',this);
+        this.events.log('template',this);
         this.$el.innerHTML = `
             <section id="user-profile">
                 <aside>
@@ -75,7 +75,7 @@ export default class UserProfileView {
 
     submitHandler(e){
         e.preventDefault();
-        console.log('submitHandler',e);
+        this.events.log('submitHandler',e);
         let $selectEl = this.$el.querySelector('select[name="timezones"]');
 
         this.model.update({
@@ -88,7 +88,7 @@ export default class UserProfileView {
     }
 
     deleteHandler(){
-console.log('deleteHandler');
+this.events.log('deleteHandler');
         const result = window.confirm('Are you sure you want to do this? All your data will be deleted permanently');
         if (result){ this.model.delete(); }
     }

@@ -8,11 +8,11 @@ export default class UserModel {
         this.data.timezone = new Date().getTimezoneOffset() / 60;
         this.setData(data);
         this.getUserFromDB();
-        console.log('userModel',this.data);
+        this.events.log('userModel',this.data);
     }
 
     setData(data){
-        console.log('setData',data);
+        this.events.log('setData',data);
         if (data && data.user){ 
             this.data.locale = data.additionalUserInfo.profile.locale;
             this.data.gender = data.additionalUserInfo.profile.gender;
@@ -31,22 +31,22 @@ export default class UserModel {
         this.docRef = this.db.collection('users').doc(this.uid);
         this.docRef.get().then( doc => {
             if (doc.exists){ 
-                console.log('doc exists',doc.data());
+                this.events.log('doc exists',doc.data());
                 this.setData(doc.data());
                 this.events.pub('user_model:update',this);
             } else { 
-                console.log(`No Doc exists for uid: ${this.uid}, creating one now`);
+                this.events.log(`No Doc exists for uid: ${this.uid}, creating one now`);
                 this.save('user_model:create');
             }
-        }).catch( err => console.log(`Error retrieving doc uid: ${this.uid}`,err));
+        }).catch( err => this.events.log(`Error retrieving doc uid: ${this.uid}`,err));
     }
 
     save(eventName){
         let event = eventName || 'user_model:save';
-        console.log('save user model',this.data);
+        this.events.log('save user model',this.data);
         this.db.collection('users').doc(this.uid).set(this.data)
             .then( res => {
-                console.log('user data saved',res);
+                this.events.log('user data saved',res);
                 this.events.pub(event,this);
         });
     }
@@ -55,7 +55,7 @@ export default class UserModel {
     delete(event){ 
         this.db.collection('users').doc(this.uid).delete()
             .then( res => {
-                console.log('user data deleted',res);
+                this.events.log('user data deleted',res);
                 window.user = undefined;
                 this.events.pub('user_model:delete',this);
         });
