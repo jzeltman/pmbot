@@ -54,18 +54,6 @@ console.log('form data',task);
     }
 }
 
-const googleLogin = () => {
-    const provider = new firebase.auth.GoogleAuthProvider();
-
-    firebase.auth().signInWithPopup(provider)
-            .then(result => user = result.user);
-}
-
-const firebaseInit = () => {
-    db = firebase.firestore();
-    console.log('firebaseInit',db);
-}
-
 document.addEventListener('DOMContentLoaded', firebaseInit); 
 document.querySelector('form[action="/task/new"]').addEventListener('submit',taskSubmitHandler);
 document.querySelector('form[action="/project/new"]').addEventListener('submit',projectSubmitHandler);

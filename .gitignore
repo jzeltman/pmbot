@@ -65,5 +65,8 @@ node_modules/
 .env
 
 public/css/
+public/img/
 public/js/
+public/json/
+public/public/
 public/index.html

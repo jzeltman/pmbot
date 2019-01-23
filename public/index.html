@@ -15,50 +15,22 @@
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
 
-    <link rel="stylesheet" href="css/index.c8032f008b02a384e556.css?2ff55ca70d960e701cb1">
+    <link rel="stylesheet" href="css/index.633819e914c8b7ac3a6e.css?4d9e982d3992ddeb295d">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
   </head>
-  <body>
+  <body id="app">
 
     <header>
-      <h1>pmbot</h1>
-      <button onclick="googleLogin()">
-        Login with Google
-      </button>
+      <h1>COACHBOT</h1>
+      <aside id="user"></aside>
     </header>
-
-    <form method="POST" action="/project/new">
-      <header>
-        <label for="project_name">Project Name</label>
-        <input type="text" placeholder="My Project..." name="project_name" />
-      </header>
-      <section>
-        <label for="project_due">Due Date</label>
-        <input type="date" name="project_due" />
-
-        <label for="project_notes">Notes</label>
-        <input type="textarea" placeholder="Project notes..." name="project_notes" />
-
-        <input type="submit" name="project_submit" value="Submit" />
-      </section>
-    </form>
-<hr/>
-    <form method="POST" action="/task/new">
-      <header>
-        <label for="task_name">Task Name</label>
-        <input type="text" placeholder="My task..." name="task_name" />
-      </header>
-      <section>
-        <label for="task_due">Due Date</label>
-        <input type="date" name="task_due" />
-
-        <label for="task_notes">Notes</label>
-        <input type="textarea" placeholder="Task notes..." name="task_notes" />
-
-        <input type="submit" name="task_submit" value="Submit" />
-      </section>
-    </form>
-
-    <script src="js/main.8edb76480a569330e8a2.js?2ff55ca70d960e701cb1"></script>
+    <aside id="chat-container">
+      <input type="text" name="new_message" placeholder="Hey Coach..." />
+    </aside>
+    <main></main>
+    <script src="js/main.51d641fcd36e46154f2b.js?4d9e982d3992ddeb295d"></script>
+    <script src="http://localhost:35729/livereload.js"></script>
   </body>
 </html>
