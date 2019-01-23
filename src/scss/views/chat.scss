@@ -1,0 +1,25 @@
+#chat-container {
+    position: absolute;
+    top: 4rem;
+    right: .5rem;
+    bottom: .5rem;
+    width: 25%;
+    border-radius: 7px;
+    background: $lineColor;
+    border: 3px solid #fff;
+
+    input {
+        &[type=text] {
+            width: 100%;
+            padding: .5rem;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            border: none;
+            border-top: 3px solid #fff;
+            background: transparent;
+            color: $secondaryColor;
+        }
+    }
+}

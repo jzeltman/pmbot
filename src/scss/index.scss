@@ -1,63 +1,48 @@
+@import './vars';
 @import './mixins';
+@import '~normalize.css';
+@import '~choices.js/public/assets/styles/choices.min.css';
 
-$primaryColor: #42c698;
-$secondaryColor: #005e79;
-$tertiaryColor: #feb02d;
-$bgTop: #e0fffc;
-$bgBottom: #98ffe7;
-$bodyFont: 'Work Sans', sans-serif; 
+@import './type';
+@import './utilities';
 
-* { box-sizing: border-box; }
+@import './views/app-header';
+@import './views/chat';
+
+@import './views/user-profile';
+
+* { 
+    box-sizing: border-box; 
+    &:focus { outline: none; }
+}
 
 html, body {
-    font-family: $bodyFont;
     margin: 0;
     padding: 0;
     font-size: 16px;
-    @include linearGradient($bgTop, $bgBottom);
     font-weight: 400;
 }
 
-a { 
-    color: $primaryColor;
+html { 
+    background: url($lightGreenLinesUrl) repeat; 
+    height: 100%;
 }
 
-header {
-    background: $primaryColor;
-    margin: 0;
-    padding: 0 1rem;
-    display: flex;
-    justify-content: space-between;
+body {
+    margin: 3rem;
+    box-shadow: 0 0 2rem rgba($secondaryColor,.5); 
+    background: url($linesUrl) repeat;
+    border-radius: 10px;
+    min-height: calc(100% - 6rem);
+    position: relative;
+}
 
-    h1 {
-        color: $secondaryColor;
-        margin: 0;
-        padding: 0;
-        font: 300 3rem/5rem $bodyFont;
-    }
+a { color: $primaryColor; }
 
-    #user {
-        align-self: center;
-
-        button {
-            background: $bgBottom;
-            border: 3px solid $bgBottom;
-            padding: 0 1.2rem;
-            color: $secondaryColor;
-            font: 400 1.2rem/3rem $bodyFont;
-            cursor: pointer;
-            border-radius: 50px;
-            position: relative;
-
-            img { 
-                max-width: 3rem;
-                border-radius: 1000px;
-                position: absolute;
-                top: 0;
-                right: 0;
-            }
-        }
-
-        #profile { padding: 0 4rem 0 1.2rem; }
-    }
+main {
+    position: absolute;
+    top: 4rem;
+    left: .5rem;
+    bottom: .5rem;
+    right: 27%;
 }

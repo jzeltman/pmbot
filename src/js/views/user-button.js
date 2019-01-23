@@ -1,5 +1,4 @@
 import Utils        from '../utils/_utils';
-import UserModel    from '../models/user';
 
 export default class UserButtonView {
     constructor(el){
@@ -8,9 +7,9 @@ export default class UserButtonView {
         this.template();
         console.log('button Auth',el,Utils);
 
-
         this.events.sub('auth:success',this.updateViewWithModel.bind(this));
         this.events.sub('user_model:create',this.template.bind(this));
+        this.events.sub('user_model:delete',this.updateViewWithModel.bind(this));
     }
 
     template(){
@@ -18,17 +17,14 @@ export default class UserButtonView {
         if (this.model === undefined){
             markup = `<button id="login">Login</button>`;
         } else {
-            markup = `
-                <button id="profile">
-                    <span>My Profile</span>
-                    <img src="${this.model.data.photoURL}" />
-                </button>`;
+            markup = `<button id="profile">My Profile</button>`;
         }
         this.$el.innerHTML = markup; 
         this.$el.querySelector('button').addEventListener('click',this.buttonClickHandler.bind(this));
     }
 
     buttonClickHandler(e){
+        if (!window.timezoneData){ this.getTimezones(); }
         if (e.target.getAttribute('id') === 'login'){ Utils.Auth(); } 
         else { window.events.pub('user_profile', null); }
     }
@@ -36,5 +32,16 @@ export default class UserButtonView {
     updateViewWithModel(e){
         this.model = window.user;
         this.template();
+    }
+
+    getTimezones(){
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', window.location.origin + '/json/timezones.json',true);
+        xhr.send();
+        xhr.onload = () => {
+            const data = JSON.parse(xhr.responseText);
+            window.events.pub('user_button:timezone',data); 
+            window.timezoneData = data;
+        }
     }
 }
